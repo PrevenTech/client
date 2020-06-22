@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:preven_tech/main.dart';
 import 'package:preven_tech/status.dart';
 import 'package:preven_tech/survey.dart';
+import 'package:preven_tech/hotmap.dart';
 
 class AppDrawer extends Drawer {
   @override
@@ -23,6 +24,11 @@ class AppDrawer extends Drawer {
             leading: Icon(Icons.location_on),
             title: Text('Report Symptoms'),
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SurveyScreen())),
+          ),
+          ListTile(
+            leading: Icon(Icons.map),
+            title: Text('Hot Map'),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => HotmapScreen())),
           ),
         ],
       ),
