@@ -1,16 +1,10 @@
-# preven_tech
+# PrevenTech
 
-A new Flutter project.
+> This project was developed during the MIT Latin America vs COVID-19 challenge.
 
-## Getting Started
+Testing, case tracing, and access to good healthcare is scarce in many countries in Latin America, therefore many cases go undetected and patients unattended. It’s hard to know who is infected and even harder to know who is immune, no one knows the real number of infected and dead people.  PrevenTech is an app that can trace cases by tracking the location of the user throughout the day. If a user gets infected or presents symptoms he can report it to the app and the app will automatically notify other users in case they were in the same places he visited in the past 14 days at the same time (+-1hour) so they can take precautions and prevent further spread. If we know the people are showing symptoms, we will send them an alert (of color - example yellow). If people near them are tested positive, we will send them another color alert. This allows people to have an idea about where the most covid cases are so they are on high alert about those places. If this problem is not solved then it can spread to people very fast because you don’t know where the infected people have been. There are devices that check your vital signs and alert you but we are focusing on specifically covid cases. This app would be completely anonymous, the location would be kept on device and only be sent to the server if the user shows symptoms or tests positive (without any personal identifiable information). The data gathered through the app will allow to generate more acurrate predictions on case surges and curves, as well as generate hot maps of where COVID-19 cases appear and detecting common movement patterns of infected people.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Status
+* The app is still in very early stages, it's only a functional prototype. There's still a long way to get it production ready.
+* The code and some implementations may not be the best (we are working on it). This is because it was built in under 24 hours. We will work to make it production ready.
