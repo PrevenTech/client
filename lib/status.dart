@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'misc/user.dart';
 import 'misc/nav.dart';
+import 'location/libLocation.dart';
+import 'dart:async';
 
 class StatusScreen extends StatefulWidget {
   @override
@@ -8,6 +11,31 @@ class StatusScreen extends StatefulWidget {
 }
 
 class StatusScreenState extends State<StatusScreen> {
+  toMap(dynamic loc) {
+    var obj = {
+      'latitude': loc.latitude,
+      'longitude': loc.longitude,
+      'altitude': loc.altitude,
+      'bearing': loc.bearing,
+      'accuracy': loc.accuracy,
+      'speed': loc.speed,
+      'time': loc.time
+    };
+    return obj;
+  }
+
+  @override
+  void initState() {
+    const locationOptions =
+        LocationOptions(accuracy: LocationAccuracy.best, distanceFilter: 10);
+    final Stream<Position> positionStream =
+        Geolocator().getPositionStream(locationOptions);
+    StreamSubscription<Position> _positionStreamSubscription =
+        positionStream.listen((Position position) {
+      LocationRegistry.addLocation(position.toJson());
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +49,13 @@ class StatusScreenState extends State<StatusScreen> {
     } else if (User.status == 1) {
       color = Colors.yellow;
       label = "Possible exposure to COVID-19";
-      desc = "You may have been exposed to COVID-19. Take the necessary precuations and only go out if necessary";
+      desc =
+          "You may have been exposed to COVID-19. Take the necessary precuations and only go out if necessary";
     } else if (User.status == 2) {
       label = "Exposure to COVID-19";
       color = Colors.red;
-      desc = "You have been exposed to COVID-19. Take the necessary precuations and self isolate";
+      desc =
+          "You have been exposed to COVID-19. Take the necessary precuations and self isolate";
     } else if (User.status == 3) {
       color = Colors.green;
       label = "Possible Immunity";
@@ -61,16 +91,33 @@ class StatusScreenState extends State<StatusScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 8.0,),
-            Text(label, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 30.0), textAlign: TextAlign.center,),
-            SizedBox(height: 5.0,),
-            Text(desc, style: TextStyle(fontSize: 18.0),  textAlign: TextAlign.center,),
+            SizedBox(
+              height: 8.0,
+            ),
+            Text(
+              label,
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 30.0),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            Text(
+              desc,
+              style: TextStyle(fontSize: 18.0),
+              textAlign: TextAlign.center,
+            ),
             SizedBox(height: 5.0),
-            OutlineButton(onPressed: () {
-              print('button pressed');
-            }, child: Text('RESOURCES'),),
+            OutlineButton(
+              onPressed: () {
+                print('button pressed');
+              },
+              child: Text('RESOURCES'),
+            ),
             RaisedButton(
-              child: Text(User.status != 2 ?'I HAVE SYMPTOMS':'SUBMIT SYMPTOM REPORT'),
+              child: Text(User.status != 2
+                  ? 'I HAVE SYMPTOMS'
+                  : 'SUBMIT SYMPTOM REPORT'),
               color: Colors.red,
               textColor: Colors.white,
               onPressed: () => print('button pr'),

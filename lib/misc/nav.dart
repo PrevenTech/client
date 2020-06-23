@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:preven_tech/main.dart';
+import 'package:preven_tech/locationHistory.dart';
 import 'package:preven_tech/status.dart';
 import 'package:preven_tech/survey.dart';
 import 'package:preven_tech/hotmap.dart';
@@ -18,7 +18,7 @@ class AppDrawer extends Drawer {
           ListTile(
             leading: Icon(Icons.location_on),
             title: Text('Location History'),
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => MyHomePage())),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LocationHistoryScreen())),
           ),
           ListTile(
             leading: Icon(Icons.location_on),
