@@ -30,7 +30,7 @@ class StatusScreenState extends State<StatusScreen> {
     if (!User.ready) {
       User.init();
     }
-    if (!LocationRegistry.ready) {
+    if (!(LocationRegistry.ready)) {
       LocationRegistry.init();
 
       const locationOptions =

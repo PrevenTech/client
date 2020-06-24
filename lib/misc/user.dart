@@ -19,6 +19,7 @@ class User {
 
   static init() async {
     var data = await FileManager.readFile(USER_DATA);
+    print('User init');
     User.status.value = data['status'];
     if (data['latitude'] == 0) {
       Position position = await Geolocator().getLastKnownPosition(desiredAccuracy: LocationAccuracy.best);

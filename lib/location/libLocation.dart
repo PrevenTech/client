@@ -2,7 +2,7 @@ import 'package:preven_tech/misc/fileManager.dart';
 
 class LocationRegistry {
   static bool ready = false;
-  static List<Map<dynamic, dynamic>> _locations = [];
+  static List<dynamic> _locations = [];
   static List<dynamic> get locations => LocationRegistry._locations;
   static Map<dynamic, dynamic> get lastLocation =>
       LocationRegistry._locations[LocationRegistry._locations.length];
@@ -13,7 +13,7 @@ class LocationRegistry {
   static init() async {
     var data = await FileManager.readFile(LOCATION_REGISTRY);
     print('LocationRegistry initialied');
-    LocationRegistry._locations = data['status'];
+    LocationRegistry._locations = data;
     LocationRegistry.ready = true;
   }
 }
