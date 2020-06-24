@@ -13,7 +13,8 @@ class LocationHistoryScreen extends StatefulWidget {
 
 class _LocationHistoryScreenState extends State<LocationHistoryScreen> {
   // LocationTracker locationTracker = LocationTracker.useMode(0);
-  var locations = LocationRegistry.locations;
+  List<dynamic> locations = LocationRegistry.locations;
+
   @override
   void initState() {
     print('Registred locations: ${locations.length}');
@@ -27,7 +28,7 @@ class _LocationHistoryScreenState extends State<LocationHistoryScreen> {
         onPressed: () async {
           await isInfected().then((value) {
             if (value) {
-              User.status = 2;
+              User.status.value = 2;
               return showDialog(
                 context: context,
                 barrierDismissible: false,
